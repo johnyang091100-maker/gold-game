@@ -1,10 +1,117 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Gold Game</title>
+<meta charset="UTF-8">
+<title>杨氏商业帝国</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f5f5f5;
+padding:20px;
+}
+
+.box{
+background:white;
+padding:20px;
+border-radius:15px;
+max-width:500px;
+margin:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+button{
+padding:15px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:gold;
+}
+</style>
 </head>
+
 <body>
-<h1>🎮 我的第一个游戏</h1>
-<p>成功上传了！</p>
+
+<div class="box">
+
+<h1>🏢 杨氏商业帝国</h1>
+
+<h2>CEO等级: <span id="level">1</span></h2>
+
+<h2>金币: <span id="gold">0</span></h2>
+
+<button onclick="earnMoney()">
+💰 赚钱
+</button>
+
+<br>
+
+<button onclick="upgrade()">
+⬆️ 升级公司
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+<script>
+
+let gold =
+Number(localStorage.getItem("gold")) || 0;
+
+let level =
+Number(localStorage.getItem("level")) || 1;
+
+update();
+
+function earnMoney(){
+
+gold += level * 10;
+
+save();
+update();
+}
+
+function upgrade(){
+
+let cost = level * 100;
+
+if(gold >= cost){
+
+gold -= cost;
+level++;
+
+save();
+update();
+
+document.getElementById("msg").innerHTML =
+"升级成功！";
+
+}else{
+
+document.getElementById("msg").innerHTML =
+"金币不足！";
+
+}
+}
+
+function update(){
+
+document.getElementById("gold").innerHTML = gold;
+document.getElementById("level").innerHTML = level;
+
+}
+
+function save(){
+
+localStorage.setItem("gold",gold);
+localStorage.setItem("level",level);
+
+}
+
+</script>
+
 </body>
 </html>
