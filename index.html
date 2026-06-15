@@ -5,30 +5,28 @@
 <title>天启帝国</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(#0b1020,#101d3b);
+background:#071229;
 color:white;
 }
 
-.topbar{
-display:flex;
-justify-content:space-around;
-background:#111827;
-padding:12px;
+.top{
+background:linear-gradient(90deg,#f5b041,#ffd700);
+padding:15px;
+text-align:center;
+font-size:30px;
 font-weight:bold;
-position:sticky;
-top:0;
+color:black;
 }
 
-.header{
-text-align:center;
+.resource{
+display:flex;
+justify-content:space-around;
 padding:15px;
-font-size:28px;
-font-weight:bold;
-color:gold;
+background:#111d3b;
+font-size:22px;
 }
 
 .map{
@@ -36,178 +34,161 @@ padding:20px;
 text-align:center;
 }
 
-.building{
-background:#1f2937;
-border:2px solid gold;
-border-radius:15px;
-padding:15px;
-margin:10px auto;
-width:180px;
+.castle{
+font-size:90px;
+animation:float 2s infinite;
 }
 
-.row{
-display:flex;
-justify-content:center;
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
 gap:15px;
+padding:20px;
+}
+
+.card{
+background:#1c2947;
+padding:25px;
+border-radius:20px;
+font-size:22px;
+box-shadow:0 0 15px rgba(255,215,0,.3);
 }
 
 button{
-background:gold;
+background:#ffd700;
 border:none;
-padding:8px 15px;
-border-radius:10px;
+padding:15px;
+border-radius:12px;
+font-size:20px;
 font-weight:bold;
+width:100%;
+margin-top:10px;
 }
 
-.menu{
+.bottom{
 position:fixed;
 bottom:0;
-left:0;
-right:0;
-background:#111827;
+width:100%;
 display:flex;
 justify-content:space-around;
-padding:12px;
+background:#111d3b;
+padding:15px;
+font-size:20px;
 }
 
-.menu div{
-text-align:center;
-font-size:14px;
+.rank{
+font-size:26px;
+color:#ffd700;
 }
-
 </style>
+
 </head>
 
 <body>
 
-<div class="topbar">
-<div>🪙 <span id="gold">1000</span></div>
-<div>💎 <span id="diamond">50</span></div>
-<div>🏆 <span id="trophy">0</span></div>
+<div class="top">
+👑 天启帝国
 </div>
 
-<div class="header">
-👑 天启帝国 👑
+<div class="resource">
+<div>🪙 <span id="gold">1000</span></div>
+<div>💎 <span id="gem">100</span></div>
 </div>
 
 <div class="map">
 
-<div class="building">
-🏰<br>
-帝国大厅 Lv.<span id="hall">1</span><br><br>
-<button onclick="upgradeHall()">升级</button>
-</div>
+<div class="castle">🏰</div>
 
-<div class="row">
+<h2>帝国大厅 Lv.1</h2>
 
-<div class="building">
-⛏️<br>
-金矿 Lv.<span id="mine">1</span><br><br>
-<button onclick="upgradeMine()">升级</button>
-</div>
-
-<div class="building">
-🌲<br>
-伐木场 Lv.1
+<div class="rank">
+🏆 全球排名 #9999
 </div>
 
 </div>
 
-<div class="row">
+<div class="grid">
 
-<div class="building">
-🏹<br>
-兵营 Lv.1
+<div class="card">
+⛏️ 金矿 Lv.1
+<button onclick="mine()">
+收取金币
+</button>
 </div>
 
-<div class="building">
-🛡️<br>
-城墙 Lv.1
+<div class="card">
+🏹 兵营 Lv.1
+<button>
+训练士兵
+</button>
+</div>
+
+<div class="card">
+🏠 房地产
+<button>
+购买地产
+</button>
+</div>
+
+<div class="card">
+🚗 豪车中心
+<button>
+购买豪车
+</button>
+</div>
+
+<div class="card">
+👥 联盟
+<button>
+加入联盟
+</button>
+</div>
+
+<div class="card">
+⚔️ 攻击部落
+<button onclick="attack()">
+开始攻击
+</button>
 </div>
 
 </div>
 
-<div class="building">
-⚔️<br>
-竞技场<br><br>
-<button onclick="attack()">出征</button>
-</div>
-
-</div>
-
-<div class="menu">
-<div>🏠<br>主城</div>
-<div>⚔️<br>战斗</div>
-<div>🏆<br>排行</div>
-<div>🛒<br>商城</div>
-<div>👥<br>联盟</div>
+<div class="bottom">
+🏠 主城
+⚔️ 战斗
+👥 联盟
+🏆 排名
+🛒 商城
 </div>
 
 <script>
 
 let gold=1000;
-let diamond=50;
-let trophy=0;
 
-let hall=1;
-let mine=1;
-
-function update(){
+function mine(){
+gold+=500;
 document.getElementById("gold").innerHTML=gold;
-document.getElementById("diamond").innerHTML=diamond;
-document.getElementById("trophy").innerHTML=trophy;
-document.getElementById("hall").innerHTML=hall;
-document.getElementById("mine").innerHTML=mine;
-}
-
-function upgradeMine(){
-
-let cost=mine*500;
-
-if(gold>=cost){
-gold-=cost;
-mine++;
-update();
-}else{
-alert("金币不足");
-}
-
-}
-
-function upgradeHall(){
-
-let cost=hall*1000;
-
-if(gold>=cost){
-gold-=cost;
-hall++;
-update();
-}else{
-alert("金币不足");
-}
-
 }
 
 function attack(){
 
-let reward=Math.floor(Math.random()*1000)+500;
+let reward=Math.floor(Math.random()*3000)+1000;
+
+alert(
+"⚔️ 攻击成功！\n获得金币："+reward
+);
 
 gold+=reward;
-trophy+=10;
 
-alert("⚔️ 战斗胜利！\n获得 "+reward+" 金币");
-
-update();
+document.getElementById("gold").innerHTML=gold;
 
 }
-
-setInterval(function(){
-
-gold+=mine*20;
-
-update();
-
-},3000);
 
 </script>
 
