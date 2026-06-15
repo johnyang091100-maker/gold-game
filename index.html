@@ -2,197 +2,193 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>👑 天启帝国 👑</title>
+<title>天启帝国</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial;
 }
 
 body{
-height:100vh;
-background:url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?q=80&w=1200") center center/cover no-repeat;
-overflow:hidden;
-}
-
-.overlay{
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.55);
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.box{
-text-align:center;
+background:linear-gradient(to bottom,#020b3d,#04186d);
 color:white;
+text-align:center;
+min-height:100vh;
+padding:20px;
 }
 
 .logo{
-font-size:90px;
-animation:glow 2s infinite alternate;
-}
-
-.title{
-font-size:60px;
+font-size:50px;
 color:gold;
-text-shadow:0 0 25px gold;
+font-weight:bold;
+text-shadow:0 0 20px gold;
+margin-top:20px;
+}
+
+.player{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.avatar{
+font-size:70px;
+}
+
+.name{
+font-size:24px;
+font-weight:bold;
 margin-top:10px;
 }
 
-.sub{
-margin-top:10px;
-letter-spacing:8px;
-font-size:20px;
+.vip{
+color:gold;
+margin-top:5px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:20px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:15px;
+font-size:18px;
+}
+
+.menu{
+margin-top:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
 .btn{
-margin-top:35px;
-padding:18px 60px;
-font-size:24px;
+background:gold;
+color:black;
+padding:18px;
+border-radius:15px;
+font-size:20px;
 font-weight:bold;
 border:none;
-border-radius:50px;
-background:gold;
-cursor:pointer;
-box-shadow:0 0 25px gold;
 }
 
 .btn:hover{
 transform:scale(1.05);
 }
 
-.footer{
-position:absolute;
-bottom:30px;
-width:100%;
-text-align:center;
+.start{
+margin-top:25px;
+background:#ff5722;
 color:white;
-font-size:18px;
+padding:20px;
+font-size:24px;
+border:none;
+border-radius:50px;
+width:100%;
+font-weight:bold;
 }
 
-@keyframes glow{
-from{
-filter:drop-shadow(0 0 10px gold);
-}
-to{
-filter:drop-shadow(0 0 30px gold);
-}
+.footer{
+margin-top:30px;
+opacity:.8;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="overlay">
+<div class="logo">
+👑 天启帝国 👑
+</div>
 
-<div class="box">
+<div class="player">
 
-<div class="logo">👑</div>
+<div class="avatar">🤴</div>
 
-<div class="title">天启帝国</div>
+<div class="name">
+国王陛下
+</div>
 
-<div class="sub">永 恒 王 座</div>
+<div class="vip">
+⭐ VIP 1 ⭐
+</div>
 
-<button class="btn" onclick="startGame()">
-⚔️ 进入帝国
+</div>
+
+<div class="stats">
+
+<div class="card">
+💰 金币<br><b>1000</b>
+</div>
+
+<div class="card">
+💎 钻石<br><b>500</b>
+</div>
+
+<div class="card">
+⚔️ 战力<br><b>100</b>
+</div>
+
+<div class="card">
+🏰 王国等级<br><b>1</b>
+</div>
+
+</div>
+
+<div class="menu">
+
+<button class="btn">
+🎁 每日签到
+</button>
+
+<button class="btn">
+🛒 帝国商城
+</button>
+
+<button class="btn">
+⚔️ 征战世界
+</button>
+
+<button class="btn">
+🏆 排行榜
 </button>
 
 </div>
 
-<div class="footer">
-🔥 征服世界 · 建立联盟 · 攻打部落 🔥
-</div>
+<button class="start">
+🚀 开始冒险
+</button>
 
+<div class="footer">
+🔥 征服世界 · 建立联盟 · 成为传奇 🔥
 </div>
 
 <script>
 
-function startGame(){
+window.onload=function(){
 
-let msg = new SpeechSynthesisUtterance(
-"欢迎来到天启帝国，伟大的国王陛下。"
+let msg=new SpeechSynthesisUtterance(
+"欢迎来到天启帝国，伟大的国王陛下"
 );
 
 msg.lang="zh-CN";
+msg.rate=0.9;
+msg.pitch=0.9;
 
 speechSynthesis.speak(msg);
 
-setTimeout(function(){
-
-document.body.innerHTML = `
-
-<div style="
-background:#050f2c;
-height:100vh;
-color:white;
-text-align:center;
-padding-top:80px;
-">
-
-<h1 style="
-color:gold;
-font-size:50px;
-margin-bottom:30px;
-">
-👑 游戏大厅 👑
-</h1>
-
-<div style="
-background:#111a45;
-width:300px;
-margin:auto;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
-">
-💰 金币：1000
-</div>
-
-<div style="
-background:#111a45;
-width:300px;
-margin:auto;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
-">
-⚔️ 战力：100
-</div>
-
-<div style="
-background:#111a45;
-width:300px;
-margin:auto;
-padding:20px;
-border-radius:15px;
-margin-bottom:15px;
-">
-🏰 王国等级：1
-</div>
-
-<button onclick="alert('开始征战！')"
-style="
-padding:15px 40px;
-font-size:22px;
-background:gold;
-border:none;
-border-radius:40px;
-font-weight:bold;
-">
-🚀 开始游戏
-</button>
-
-</div>
-`;
-
-},3000);
-
 }
+
 </script>
 
 </body>
