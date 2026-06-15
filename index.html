@@ -2,102 +2,178 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>天启帝国</title>
+<title>👑 天启帝国 👑</title>
 
 <style>
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
 height:100vh;
+background:url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?q=80&w=1200") center center/cover no-repeat;
+overflow:hidden;
+}
+
+.overlay{
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(180deg,#050f2c,#0d1b5e);
-font-family:Arial,sans-serif;
-color:white;
 }
 
 .box{
 text-align:center;
+color:white;
 }
 
 .logo{
-font-size:80px;
-animation: glow 2s infinite alternate;
+font-size:90px;
+animation:glow 2s infinite alternate;
 }
 
-h1{
-font-size:55px;
+.title{
+font-size:60px;
 color:gold;
-text-shadow:0 0 20px gold;
-margin:10px 0;
+text-shadow:0 0 25px gold;
+margin-top:10px;
 }
 
-p{
+.sub{
+margin-top:10px;
+letter-spacing:8px;
 font-size:20px;
-letter-spacing:5px;
 }
 
-button{
-margin-top:20px;
-padding:18px 50px;
+.btn{
+margin-top:35px;
+padding:18px 60px;
 font-size:24px;
 font-weight:bold;
 border:none;
 border-radius:50px;
 background:gold;
 cursor:pointer;
-box-shadow:0 0 20px gold;
+box-shadow:0 0 25px gold;
 }
 
-button:hover{
+.btn:hover{
 transform:scale(1.05);
+}
+
+.footer{
+position:absolute;
+bottom:30px;
+width:100%;
+text-align:center;
+color:white;
+font-size:18px;
 }
 
 @keyframes glow{
 from{
-filter:drop-shadow(0 0 5px gold);
+filter:drop-shadow(0 0 10px gold);
 }
 to{
-filter:drop-shadow(0 0 20px gold);
+filter:drop-shadow(0 0 30px gold);
 }
 }
 </style>
-
 </head>
 
 <body>
+
+<div class="overlay">
 
 <div class="box">
 
 <div class="logo">👑</div>
 
-<h1>天启帝国</h1>
+<div class="title">天启帝国</div>
 
-<p>永恒王座</p>
+<div class="sub">永 恒 王 座</div>
 
-<button onclick="showGame()">
+<button class="btn" onclick="startGame()">
 ⚔️ 进入帝国
 </button>
 
 </div>
 
+<div class="footer">
+🔥 征服世界 · 建立联盟 · 攻打部落 🔥
+</div>
+
+</div>
+
 <script>
-function showGame(){
+
+function startGame(){
+
+let msg = new SpeechSynthesisUtterance(
+"欢迎来到天启帝国，伟大的国王陛下。"
+);
+
+msg.lang="zh-CN";
+
+speechSynthesis.speak(msg);
+
+setTimeout(function(){
+
 document.body.innerHTML = `
+
 <div style="
-text-align:center;
+background:#050f2c;
+height:100vh;
 color:white;
-font-family:Arial;
-padding-top:120px;
+text-align:center;
+padding-top:80px;
 ">
 
-<h1 style="color:gold;">👑 游戏大厅 👑</h1>
+<h1 style="
+color:gold;
+font-size:50px;
+margin-bottom:30px;
+">
+👑 游戏大厅 👑
+</h1>
 
-<h2>天启帝国</h2>
+<div style="
+background:#111a45;
+width:300px;
+margin:auto;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+">
+💰 金币：1000
+</div>
 
-<p>💰 金币：1000</p>
-<p>⚔️ 士兵：10</p>
-<p>🏰 等级：1</p>
+<div style="
+background:#111a45;
+width:300px;
+margin:auto;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+">
+⚔️ 战力：100
+</div>
+
+<div style="
+background:#111a45;
+width:300px;
+margin:auto;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+">
+🏰 王国等级：1
+</div>
 
 <button onclick="alert('开始征战！')"
 style="
@@ -106,14 +182,16 @@ font-size:22px;
 background:gold;
 border:none;
 border-radius:40px;
+font-weight:bold;
 ">
-开始游戏
+🚀 开始游戏
 </button>
 
 </div>
 `;
 
-document.body.style.background="#050f2c";
+},3000);
+
 }
 </script>
 
