@@ -7,152 +7,106 @@
 <style>
 body{
 margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(#000428,#004e92);
 font-family:Arial;
 color:white;
-background:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2');
-background-size:cover;
-background-position:center;
-min-height:100vh;
-}
-
-.top{
-display:flex;
-justify-content:space-around;
-padding:15px;
-background:rgba(0,0,0,.4);
 }
 
 .box{
-background:rgba(255,255,255,.1);
-padding:10px 20px;
-border-radius:15px;
+text-align:center;
 }
 
-.title{
-text-align:center;
-font-size:42px;
+h1{
+font-size:50px;
 color:gold;
-font-weight:bold;
-margin-top:20px;
 text-shadow:0 0 20px gold;
 }
 
-.king{
-text-align:center;
+p{
+font-size:20px;
+}
+
+button{
 margin-top:20px;
-}
-
-.king img{
-width:120px;
-}
-
-.city{
-text-align:center;
-font-size:100px;
-margin-top:20px;
-animation:float 2s infinite alternate;
-}
-
-@keyframes float{
-from{transform:translateY(0);}
-to{transform:translateY(-10px);}
-}
-
-.menu{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-padding:20px;
-}
-
-.card{
-background:rgba(0,0,0,.5);
-padding:20px;
-border-radius:20px;
-text-align:center;
-font-size:22px;
-}
-
-.start{
-display:block;
-width:85%;
-margin:20px auto;
-padding:18px;
+padding:18px 50px;
 font-size:24px;
-font-weight:bold;
 background:gold;
 border:none;
 border-radius:50px;
-}
-
-.quest{
-background:rgba(0,0,0,.5);
-margin:20px;
-padding:15px;
-border-radius:15px;
+font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-<div class="box">💰 1000</div>
-<div class="box">💎 500</div>
-<div class="box">⚔️ 100</div>
-</div>
+<div class="box">
 
-<div class="title">
-👑 天启帝国 👑
-</div>
+<h1>👑 天启帝国 👑</h1>
 
-<div class="king">
-🤴<br>
-国王陛下 Lv.1
-</div>
+<p>永恒王座</p>
 
-<div class="city">
-🏰
-</div>
-
-<div class="menu">
-
-<div class="card">⚔️ 征战</div>
-<div class="card">🏹 兵营</div>
-<div class="card">🛒 商城</div>
-<div class="card">🎁 签到</div>
-<div class="card">👥 联盟</div>
-<div class="card">🏆 排行榜</div>
-
-</div>
-
-<div class="quest">
-📜 主线任务：建立你的第一座帝国
-</div>
-
-<button class="start">
-🚀 开始冒险
+<button onclick="enterEmpire()">
+⚔️ 进入帝国
 </button>
+
+</div>
 
 <script>
 
-window.onload=function(){
+function enterEmpire(){
 
-setTimeout(function(){
-
-let msg=new SpeechSynthesisUtterance(
-"欢迎来到天启帝国，伟大的国王陛下。您的子民正在等待您的统治。"
+const msg = new SpeechSynthesisUtterance(
+"欢迎来到天启帝国，伟大的国王陛下"
 );
 
 msg.lang="zh-CN";
-msg.rate=0.85;
-msg.pitch=0.7;
 
 speechSynthesis.speak(msg);
 
-},1000);
+setTimeout(function(){
+
+document.body.innerHTML=`
+
+<div style="
+text-align:center;
+padding-top:50px;
+color:white;
+font-family:Arial;
+">
+
+<h1 style="color:gold">
+🏰 帝国大厅
+</h1>
+
+<h2>🤴 国王陛下</h2>
+
+<p>💰 金币: 1000</p>
+
+<p>💎 钻石: 500</p>
+
+<p>⚔️ 战力: 100</p>
+
+<button onclick="alert('征战系统开发中')"
+style="
+padding:15px 40px;
+font-size:22px;
+background:gold;
+border:none;
+border-radius:30px;
+">
+⚔️ 开始征战
+</button>
+
+</div>
+
+`;
+
+},2500);
 
 }
 
