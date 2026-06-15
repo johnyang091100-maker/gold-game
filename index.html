@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>天启帝国</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -13,160 +15,166 @@ font-family:Arial;
 }
 
 body{
-background:linear-gradient(to bottom,#020b3d,#04186d);
-color:white;
-text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6");
+background-size:cover;
+background-position:center;
 min-height:100vh;
+color:white;
 padding:20px;
 }
 
-.logo{
-font-size:50px;
+.title{
+text-align:center;
+font-size:40px;
 color:gold;
 font-weight:bold;
 text-shadow:0 0 20px gold;
-margin-top:20px;
+margin-bottom:20px;
 }
 
-.player{
-background:rgba(255,255,255,.08);
+.resources{
+display:flex;
+justify-content:space-between;
+margin-bottom:20px;
+}
+
+.resource{
+background:rgba(0,0,0,.5);
+padding:10px;
+border-radius:10px;
+width:48%;
+text-align:center;
+}
+
+.city{
+background:rgba(0,0,0,.5);
 padding:20px;
 border-radius:20px;
-margin-top:20px;
+text-align:center;
+margin-bottom:20px;
 }
 
-.avatar{
-font-size:70px;
+.castle{
+font-size:80px;
 }
 
-.name{
-font-size:24px;
-font-weight:bold;
+.level{
 margin-top:10px;
+font-size:22px;
 }
 
-.vip{
-color:gold;
-margin-top:5px;
-}
-
-.stats{
+.buildings{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
-margin-top:20px;
 }
 
-.card{
-background:rgba(255,255,255,.08);
+.building{
+background:rgba(0,0,0,.5);
 padding:20px;
 border-radius:15px;
-font-size:18px;
+text-align:center;
+font-size:22px;
 }
 
-.menu{
-margin-top:30px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.btn{
-background:gold;
-color:black;
-padding:18px;
-border-radius:15px;
-font-size:20px;
-font-weight:bold;
-border:none;
-}
-
-.btn:hover{
+.building:hover{
 transform:scale(1.05);
 }
 
-.start{
-margin-top:25px;
-background:#ff5722;
-color:white;
-padding:20px;
-font-size:24px;
+.btn{
+margin-top:20px;
+width:100%;
+padding:18px;
 border:none;
 border-radius:50px;
-width:100%;
+background:gold;
+font-size:22px;
 font-weight:bold;
 }
 
 .footer{
-margin-top:30px;
-opacity:.8;
+text-align:center;
+margin-top:20px;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<div class="logo">
+<div class="title">
 👑 天启帝国 👑
 </div>
 
-<div class="player">
+<div class="resources">
 
-<div class="avatar">🤴</div>
-
-<div class="name">
-国王陛下
+<div class="resource">
+💰 金币
+<h2 id="gold">1000</h2>
 </div>
 
-<div class="vip">
-⭐ VIP 1 ⭐
-</div>
-
-</div>
-
-<div class="stats">
-
-<div class="card">
-💰 金币<br><b>1000</b>
-</div>
-
-<div class="card">
-💎 钻石<br><b>500</b>
-</div>
-
-<div class="card">
-⚔️ 战力<br><b>100</b>
-</div>
-
-<div class="card">
-🏰 王国等级<br><b>1</b>
+<div class="resource">
+💎 钻石
+<h2 id="diamond">500</h2>
 </div>
 
 </div>
 
-<div class="menu">
+<div class="city">
 
-<button class="btn">
-🎁 每日签到
-</button>
+<div class="castle">
+🏰
+</div>
 
-<button class="btn">
-🛒 帝国商城
-</button>
+<div class="level">
+主城 Lv.<span id="level">1</span>
+</div>
 
-<button class="btn">
-⚔️ 征战世界
-</button>
-
-<button class="btn">
-🏆 排行榜
-</button>
+<div>
+⚔️ 战力：<span id="power">100</span>
+</div>
 
 </div>
 
-<button class="start">
-🚀 开始冒险
+<div class="buildings">
+
+<div class="building" onclick="upgrade()">
+🏰<br>
+升级主城
+</div>
+
+<div class="building" onclick="signin()">
+🎁<br>
+每日签到
+</div>
+
+<div class="building">
+🛒<br>
+帝国商城
+</div>
+
+<div class="building">
+🏆<br>
+排行榜
+</div>
+
+<div class="building">
+⚔️<br>
+世界征战
+</div>
+
+<div class="building">
+👥<br>
+联盟系统
+</div>
+
+</div>
+
+<button class="btn" onclick="startGame()">
+🚀 开始征战
 </button>
 
 <div class="footer">
@@ -175,17 +183,69 @@ opacity:.8;
 
 <script>
 
+let gold=1000;
+let level=1;
+let power=100;
+
 window.onload=function(){
 
 let msg=new SpeechSynthesisUtterance(
-"欢迎来到天启帝国，伟大的国王陛下"
+"欢迎来到天启帝国，伟大的国王陛下，您的子民正在等待您的命令"
 );
 
 msg.lang="zh-CN";
-msg.rate=0.9;
-msg.pitch=0.9;
+msg.rate=0.85;
+msg.pitch=0.8;
 
 speechSynthesis.speak(msg);
+
+}
+
+setInterval(()=>{
+
+gold+=10;
+
+document.getElementById("gold").innerHTML=gold;
+
+},1000);
+
+function upgrade(){
+
+if(gold>=500){
+
+gold-=500;
+
+level++;
+
+power+=100;
+
+document.getElementById("gold").innerHTML=gold;
+document.getElementById("level").innerHTML=level;
+document.getElementById("power").innerHTML=power;
+
+alert("🏰 主城升级成功！");
+
+}else{
+
+alert("金币不足");
+
+}
+
+}
+
+function signin(){
+
+gold+=200;
+
+document.getElementById("gold").innerHTML=gold;
+
+alert("🎁 获得200金币");
+
+}
+
+function startGame(){
+
+alert("⚔️ 世界征战即将开放");
 
 }
 
