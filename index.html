@@ -2,195 +2,121 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>天启帝国</title>
+<title>天启帝国：永恒王座</title>
 
 <style>
-body{
+*{
 margin:0;
-font-family:Arial;
-background:#071229;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?q=80&w=1200&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
 color:white;
 }
 
-.top{
-background:linear-gradient(90deg,#f5b041,#ffd700);
-padding:15px;
-text-align:center;
-font-size:30px;
-font-weight:bold;
-color:black;
-}
-
-.resource{
-display:flex;
-justify-content:space-around;
-padding:15px;
-background:#111d3b;
-font-size:22px;
-}
-
-.map{
-padding:20px;
+.container{
 text-align:center;
 }
 
-.castle{
-font-size:90px;
-animation:float 2s infinite;
+.logo{
+font-size:70px;
+animation:glow 2s infinite alternate;
 }
 
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-padding:20px;
-}
-
-.card{
-background:#1c2947;
-padding:25px;
-border-radius:20px;
-font-size:22px;
-box-shadow:0 0 15px rgba(255,215,0,.3);
-}
-
-button{
-background:#ffd700;
-border:none;
-padding:15px;
-border-radius:12px;
-font-size:20px;
+.title{
+font-size:48px;
 font-weight:bold;
-width:100%;
+color:#ffd700;
+text-shadow:0 0 20px gold;
 margin-top:10px;
 }
 
-.bottom{
-position:fixed;
-bottom:0;
-width:100%;
-display:flex;
-justify-content:space-around;
-background:#111d3b;
-padding:15px;
-font-size:20px;
+.subtitle{
+font-size:22px;
+letter-spacing:6px;
+margin-top:10px;
 }
 
-.rank{
-font-size:26px;
-color:#ffd700;
+.desc{
+margin-top:20px;
+font-size:18px;
+color:#ddd;
+}
+
+.start{
+margin-top:40px;
+padding:18px 60px;
+font-size:24px;
+font-weight:bold;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#f5b041,#ffd700);
+color:#000;
+box-shadow:0 0 30px gold;
+cursor:pointer;
+}
+
+.start:hover{
+transform:scale(1.05);
+}
+
+.server{
+margin-top:20px;
+font-size:16px;
+color:#ccc;
+}
+
+@keyframes glow{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="top">
-👑 天启帝国
+<div class="container">
+
+<div class="logo">👑</div>
+
+<div class="title">
+天启帝国
 </div>
 
-<div class="resource">
-<div>🪙 <span id="gold">1000</span></div>
-<div>💎 <span id="gem">100</span></div>
+<div class="subtitle">
+永 恒 王 座
 </div>
 
-<div class="map">
-
-<div class="castle">🏰</div>
-
-<h2>帝国大厅 Lv.1</h2>
-
-<div class="rank">
-🏆 全球排名 #9999
+<div class="desc">
+⚔️ 王权即将降临 ⚔️
 </div>
 
-</div>
-
-<div class="grid">
-
-<div class="card">
-⛏️ 金矿 Lv.1
-<button onclick="mine()">
-收取金币
+<button class="start"
+onclick="location.href='game.html'">
+▶ 开始征服
 </button>
-</div>
 
-<div class="card">
-🏹 兵营 Lv.1
-<button>
-训练士兵
-</button>
-</div>
-
-<div class="card">
-🏠 房地产
-<button>
-购买地产
-</button>
-</div>
-
-<div class="card">
-🚗 豪车中心
-<button>
-购买豪车
-</button>
-</div>
-
-<div class="card">
-👥 联盟
-<button>
-加入联盟
-</button>
-</div>
-
-<div class="card">
-⚔️ 攻击部落
-<button onclick="attack()">
-开始攻击
-</button>
+<div class="server">
+S1 王者大陆
 </div>
 
 </div>
-
-<div class="bottom">
-🏠 主城
-⚔️ 战斗
-👥 联盟
-🏆 排名
-🛒 商城
-</div>
-
-<script>
-
-let gold=1000;
-
-function mine(){
-gold+=500;
-document.getElementById("gold").innerHTML=gold;
-}
-
-function attack(){
-
-let reward=Math.floor(Math.random()*3000)+1000;
-
-alert(
-"⚔️ 攻击成功！\n获得金币："+reward
-);
-
-gold+=reward;
-
-document.getElementById("gold").innerHTML=gold;
-
-}
-
-</script>
 
 </body>
 </html>
