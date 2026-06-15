@@ -2,125 +2,213 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>杨氏商业帝国</title>
+<title>天启帝国</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
-background:#111827;
+background:linear-gradient(#0b1020,#101d3b);
 color:white;
 }
 
+.topbar{
+display:flex;
+justify-content:space-around;
+background:#111827;
+padding:12px;
+font-weight:bold;
+position:sticky;
+top:0;
+}
+
 .header{
-background:linear-gradient(90deg,#f59e0b,#fbbf24);
-padding:20px;
+text-align:center;
+padding:15px;
 font-size:28px;
 font-weight:bold;
-text-align:center;
-color:black;
-}
-
-.profile{
-padding:20px;
-text-align:center;
-}
-
-.avatar{
-font-size:60px;
-}
-
-.card{
-background:#1f2937;
-margin:15px;
-padding:20px;
-border-radius:15px;
-}
-
-.money{
-font-size:32px;
 color:gold;
-font-weight:bold;
+}
+
+.map{
+padding:20px;
+text-align:center;
+}
+
+.building{
+background:#1f2937;
+border:2px solid gold;
+border-radius:15px;
+padding:15px;
+margin:10px auto;
+width:180px;
+}
+
+.row{
+display:flex;
+justify-content:center;
+gap:15px;
 }
 
 button{
-padding:15px 25px;
-margin:10px;
-font-size:18px;
-border:none;
-border-radius:12px;
 background:gold;
+border:none;
+padding:8px 15px;
+border-radius:10px;
 font-weight:bold;
 }
 
 .menu{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-padding:15px;
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:#111827;
+display:flex;
+justify-content:space-around;
+padding:12px;
 }
 
-.box{
-background:#374151;
-padding:20px;
-border-radius:15px;
+.menu div{
 text-align:center;
-font-size:20px;
+font-size:14px;
 }
+
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+<div>🪙 <span id="gold">1000</span></div>
+<div>💎 <span id="diamond">50</span></div>
+<div>🏆 <span id="trophy">0</span></div>
+</div>
+
 <div class="header">
-🏢 杨氏商业帝国
+👑 天启帝国 👑
 </div>
 
-<div class="profile">
-<div class="avatar">👑</div>
-<h2>CEO：John Yang</h2>
+<div class="map">
+
+<div class="building">
+🏰<br>
+帝国大厅 Lv.<span id="hall">1</span><br><br>
+<button onclick="upgradeHall()">升级</button>
 </div>
 
-<div class="card">
-<p>等级：1</p>
-<p class="money">金币：0</p>
+<div class="row">
 
-<button onclick="earnMoney()">💰 赚钱</button>
-<button onclick="upgrade()">⬆️ 升级公司</button>
+<div class="building">
+⛏️<br>
+金矿 Lv.<span id="mine">1</span><br><br>
+<button onclick="upgradeMine()">升级</button>
+</div>
+
+<div class="building">
+🌲<br>
+伐木场 Lv.1
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="building">
+🏹<br>
+兵营 Lv.1
+</div>
+
+<div class="building">
+🛡️<br>
+城墙 Lv.1
+</div>
+
+</div>
+
+<div class="building">
+⚔️<br>
+竞技场<br><br>
+<button onclick="attack()">出征</button>
+</div>
+
 </div>
 
 <div class="menu">
-<div class="box">🏭 工厂</div>
-<div class="box">🚗 豪车</div>
-<div class="box">🏠 房地产</div>
-<div class="box">👨‍💼 员工</div>
-<div class="box">🏆 排行榜</div>
-<div class="box">🎁 活动</div>
+<div>🏠<br>主城</div>
+<div>⚔️<br>战斗</div>
+<div>🏆<br>排行</div>
+<div>🛒<br>商城</div>
+<div>👥<br>联盟</div>
 </div>
 
 <script>
-let money = 0;
-let level = 1;
 
-function earnMoney(){
-money += 100;
-update();
-}
+let gold=1000;
+let diamond=50;
+let trophy=0;
 
-function upgrade(){
-if(money >= 500){
-money -= 500;
-level++;
-update();
-}else{
-alert("金币不足！");
-}
-}
+let hall=1;
+let mine=1;
 
 function update(){
-document.querySelector(".money").innerHTML="金币："+money;
-document.querySelector("p").innerHTML="等级："+level;
+document.getElementById("gold").innerHTML=gold;
+document.getElementById("diamond").innerHTML=diamond;
+document.getElementById("trophy").innerHTML=trophy;
+document.getElementById("hall").innerHTML=hall;
+document.getElementById("mine").innerHTML=mine;
 }
+
+function upgradeMine(){
+
+let cost=mine*500;
+
+if(gold>=cost){
+gold-=cost;
+mine++;
+update();
+}else{
+alert("金币不足");
+}
+
+}
+
+function upgradeHall(){
+
+let cost=hall*1000;
+
+if(gold>=cost){
+gold-=cost;
+hall++;
+update();
+}else{
+alert("金币不足");
+}
+
+}
+
+function attack(){
+
+let reward=Math.floor(Math.random()*1000)+500;
+
+gold+=reward;
+trophy+=10;
+
+alert("⚔️ 战斗胜利！\n获得 "+reward+" 金币");
+
+update();
+
+}
+
+setInterval(function(){
+
+gold+=mine*20;
+
+update();
+
+},3000);
+
 </script>
 
 </body>
