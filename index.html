@@ -11,8 +11,8 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#050f2c;
-font-family:Arial;
+background:linear-gradient(180deg,#050f2c,#0d1b5e);
+font-family:Arial,sans-serif;
 color:white;
 }
 
@@ -20,44 +20,102 @@ color:white;
 text-align:center;
 }
 
+.logo{
+font-size:80px;
+animation: glow 2s infinite alternate;
+}
+
 h1{
-font-size:50px;
+font-size:55px;
 color:gold;
 text-shadow:0 0 20px gold;
+margin:10px 0;
 }
 
 p{
-letter-spacing:8px;
+font-size:20px;
+letter-spacing:5px;
 }
 
 button{
+margin-top:20px;
 padding:18px 50px;
 font-size:24px;
+font-weight:bold;
 border:none;
 border-radius:50px;
 background:gold;
-font-weight:bold;
+cursor:pointer;
+box-shadow:0 0 20px gold;
 }
 
 button:hover{
 transform:scale(1.05);
 }
+
+@keyframes glow{
+from{
+filter:drop-shadow(0 0 5px gold);
+}
+to{
+filter:drop-shadow(0 0 20px gold);
+}
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="box">
-<div style="font-size:80px">👑</div>
+
+<div class="logo">👑</div>
 
 <h1>天启帝国</h1>
 
 <p>永恒王座</p>
 
-<<button onclick="location.href='https://google.com'">
+<button onclick="showGame()">
 ⚔️ 进入帝国
 </button>
+
 </div>
+
+<script>
+function showGame(){
+document.body.innerHTML = `
+<div style="
+text-align:center;
+color:white;
+font-family:Arial;
+padding-top:120px;
+">
+
+<h1 style="color:gold;">👑 游戏大厅 👑</h1>
+
+<h2>天启帝国</h2>
+
+<p>💰 金币：1000</p>
+<p>⚔️ 士兵：10</p>
+<p>🏰 等级：1</p>
+
+<button onclick="alert('开始征战！')"
+style="
+padding:15px 40px;
+font-size:22px;
+background:gold;
+border:none;
+border-radius:40px;
+">
+开始游戏
+</button>
+
+</div>
+`;
+
+document.body.style.background="#050f2c";
+}
+</script>
 
 </body>
 </html>
