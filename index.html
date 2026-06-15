@@ -2,120 +2,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>天启帝国：永恒王座</title>
-
+<title>天启帝国</title>
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
 body{
-height:100vh;
-overflow:hidden;
-background:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
-url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?q=80&w=1200&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
+margin:0;
+background:#0b1020;
+color:white;
+font-family:Arial;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
-}
-
-.container{
+height:100vh;
 text-align:center;
 }
 
-.logo{
-font-size:70px;
-animation:glow 2s infinite alternate;
+.box{
+padding:30px;
+background:#1b2338;
+border-radius:20px;
+width:300px;
 }
 
-.title{
-font-size:48px;
-font-weight:bold;
-color:#ffd700;
-text-shadow:0 0 20px gold;
-margin-top:10px;
-}
-
-.subtitle{
-font-size:22px;
-letter-spacing:6px;
-margin-top:10px;
-}
-
-.desc{
-margin-top:20px;
-font-size:18px;
-color:#ddd;
-}
-
-.start{
-margin-top:40px;
-padding:18px 60px;
-font-size:24px;
-font-weight:bold;
+button{
+padding:15px 30px;
 border:none;
-border-radius:50px;
-background:linear-gradient(90deg,#f5b041,#ffd700);
-color:#000;
-box-shadow:0 0 30px gold;
-cursor:pointer;
-}
-
-.start:hover{
-transform:scale(1.05);
-}
-
-.server{
-margin-top:20px;
-font-size:16px;
-color:#ccc;
-}
-
-@keyframes glow{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
+border-radius:10px;
+background:gold;
+font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div class="logo">👑</div>
-
-<div class="title">
-天启帝国
-</div>
-
-<div class="subtitle">
-永 恒 王 座
-</div>
-
-<div class="desc">
-⚔️ 王权即将降临 ⚔️
-</div>
-
-<button class="start"
-onclick="location.href='game.html'">
-▶ 开始征服
+<div class="box">
+<h1>👑 天启帝国 👑</h1>
+<p>永恒王座</p>
+<button onclick="alert('游戏启动成功')">
+进入帝国
 </button>
-
-<div class="server">
-S1 王者大陆
-</div>
-
 </div>
 
 </body>
