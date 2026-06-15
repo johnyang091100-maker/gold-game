@@ -1,136 +1,63 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>👑 天启帝国</title>
+<title>天启帝国</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
 body{
+margin:0;
 height:100vh;
-overflow:hidden;
-background:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.75)),
-url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?q=80&w=1200");
-background-size:cover;
-background-position:center;
 display:flex;
 justify-content:center;
 align-items:center;
+background:#050f2c;
+font-family:Arial;
 color:white;
 }
 
-.container{
+.box{
 text-align:center;
-animation:fadeIn 2s;
 }
 
-.logo{
-font-size:90px;
-animation:float 2s infinite alternate;
-}
-
-.title{
-font-size:52px;
-font-weight:bold;
+h1{
+font-size:50px;
 color:gold;
-text-shadow:
-0 0 10px gold,
-0 0 20px gold,
-0 0 40px gold;
-margin-bottom:10px;
+text-shadow:0 0 20px gold;
 }
 
-.subtitle{
-font-size:20px;
-letter-spacing:4px;
-margin-bottom:40px;
-opacity:.9;
+p{
+letter-spacing:8px;
 }
 
-.start-btn{
-padding:18px 60px;
+button{
+padding:18px 50px;
 font-size:24px;
-font-weight:bold;
 border:none;
 border-radius:50px;
-background:linear-gradient(45deg,#ffd700,#ffb700);
-color:#000;
-cursor:pointer;
-box-shadow:
-0 0 15px gold,
-0 0 30px gold;
-animation:pulse 1.5s infinite;
+background:gold;
+font-weight:bold;
 }
 
-.start-btn:hover{
-transform:scale(1.08);
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
-}
-
-@keyframes float{
-from{transform:translateY(-10px);}
-to{transform:translateY(10px);}
-}
-
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-.footer{
-position:absolute;
-bottom:25px;
-width:100%;
-text-align:center;
-font-size:14px;
-opacity:.8;
+button:hover{
+transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="box">
+<div style="font-size:80px">👑</div>
 
-<div class="logo">👑</div>
+<h1>天启帝国</h1>
 
-<div class="title">
-天启帝国
-</div>
+<p>永恒王座</p>
 
-<div class="subtitle">
-永 恒 王 座
-</div>
-
-<button class="start-btn" onclick="enterEmpire()">
+<button onclick="location.href='game.html'">
 ⚔️ 进入帝国
 </button>
-
 </div>
-
-<div class="footer">
-🔥 征服世界 · 建立联盟 · 攻打部落 🔥
-</div>
-
-<script>
-function enterEmpire(){
-alert("欢迎进入天启帝国！");
-}
-</script>
 
 </body>
 </html>
