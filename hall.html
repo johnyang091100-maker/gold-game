@@ -2,114 +2,177 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>天启帝国</title>
+<title>天启帝国 - 王者大厅</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
 
 body{
-margin:0;
-background:url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?auto=format&fit=crop&w=1200&q=80');
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+url("https://images.unsplash.com/photo-1511512578047-dfb367046420");
 background-size:cover;
 background-position:center;
-font-family:Arial;
 color:white;
+overflow:hidden;
 }
 
-.overlay{
-background:rgba(0,0,0,0.55);
-min-height:100vh;
-padding:20px;
+.top{
+display:flex;
+justify-content:space-between;
+padding:15px;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(8px);
 }
 
-.title{
-text-align:center;
-font-size:42px;
-color:gold;
+.player{
+font-size:22px;
 font-weight:bold;
-text-shadow:0 0 20px gold;
+color:gold;
+}
+
+.resource{
+display:flex;
+gap:15px;
+font-size:18px;
+}
+
+.hero{
+text-align:center;
 margin-top:20px;
 }
 
-.castle{
-text-align:center;
-font-size:100px;
-margin-top:30px;
+.hero img{
+width:180px;
+border-radius:20px;
+box-shadow:0 0 30px gold;
 }
 
-.panel{
-background:rgba(0,0,0,0.6);
+.hero h1{
+margin-top:10px;
+color:gold;
+font-size:36px;
+}
+
+.hero p{
+margin-top:10px;
+font-size:20px;
+}
+
+.play-btn{
+display:block;
+width:85%;
+margin:20px auto;
+padding:18px;
+border:none;
+border-radius:20px;
+font-size:24px;
+font-weight:bold;
+background:linear-gradient(45deg,#ffd700,#ff9900);
+}
+
+.menu{
+padding:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
 border-radius:20px;
 padding:20px;
-margin-top:20px;
+text-align:center;
+font-size:20px;
 }
 
-.stat{
-padding:12px;
-font-size:22px;
-}
-
-.btn{
+.bottom{
+position:fixed;
+bottom:0;
+left:0;
 width:100%;
-padding:18px;
-margin-top:15px;
-border:none;
-border-radius:15px;
-font-size:22px;
-font-weight:bold;
-background:gold;
+display:flex;
+justify-content:space-around;
+background:#111;
+padding:12px;
 }
 
-.red{
-background:#ff4b2b;
-color:white;
+.bottom div{
+font-size:18px;
 }
-
 </style>
+
 </head>
 
 <body>
 
-<div class="overlay">
+<div class="top">
 
-<div class="title">
-👑 天启帝国 👑
+<div class="player">
+👑 杨濰鋒
 </div>
 
-<div class="castle">
-🏰
-</div>
-
-<div class="panel">
-
-<div class="stat">
-💰 金币：1000
-</div>
-
-<div class="stat">
-💎 钻石：100
-</div>
-
-<div class="stat">
-⭐ 等级：1
+<div class="resource">
+<span>🪙1000</span>
+<span>💎100</span>
+<span>⭐1</span>
 </div>
 
 </div>
 
-<button class="btn red"
-onclick="location.href='battle.html'">
-🐉 挑战巨龙
+<div class="hero">
+
+<img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+<h1>⚔️ 亚瑟</h1>
+
+<p>战力：5000</p>
+
+</div>
+
+<button class="play-btn">
+🔥 开始匹配
 </button>
-<button class="btn"
-onclick="location.href='hero.html'">
+
+<div class="menu">
+
+<div class="card" onclick="location.href='battle.html'">
+🐉 龙王副本
+</div>
+
+<div class="card" onclick="location.href='hero.html'">
 ⚔️ 英雄殿堂
-</button>
-<button class="btn">
-⚔️ 王者竞技场
-</button>
+</div>
 
-<button class="btn">
-🏹 英雄招募
-</button>
+<div class="card">
+🏆 排位赛
+</div>
+
+<div class="card">
+🛒 商城
+</div>
+
+</div>
+
+<div class="bottom">
+
+<div>🏠首页</div>
+
+<div>⚔️英雄</div>
+
+<div>🎒背包</div>
+
+<div>👥战队</div>
+
+<div>🛒商城</div>
 
 </div>
 
