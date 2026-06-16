@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>巨龙之战</title>
+
+<style>
+
+body{
+margin:0;
+background:#050f2c;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+color:red;
+font-size:40px;
+margin-top:30px;
+}
+
+.dragon{
+font-size:120px;
+}
+
+.bar{
+width:80%;
+height:25px;
+background:#333;
+margin:auto;
+border-radius:20px;
+overflow:hidden;
+}
+
+.hp{
+height:100%;
+width:100%;
+background:red;
+}
+
+button{
+padding:15px 40px;
+font-size:24px;
+margin-top:30px;
+border:none;
+border-radius:15px;
+background:gold;
+font-weight:bold;
+}
+
+#log{
+margin-top:30px;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🐉 巨龙之王</h1>
+
+<div class="dragon">
+🐲
+</div>
+
+<div class="bar">
+<div class="hp" id="hp"></div>
+</div>
+
+<h2 id="hpText">
+生命值：100
+</h2>
+
+<button onclick="attack()">
+⚔️ 攻击
+</button>
+
+<div id="log">
+准备战斗...
+</div>
+
+<script>
+
+let dragonHp=100;
+
+function attack(){
+
+let damage=Math.floor(
+Math.random()*20
+)+10;
+
+dragonHp-=damage;
+
+if(dragonHp<0){
+dragonHp=0;
+}
+
+document.getElementById("hpText").innerHTML=
+"生命值："+dragonHp;
+
+document.getElementById("hp").style.width=
+dragonHp+"%";
+
+document.getElementById("log").innerHTML=
+"你造成了 "+damage+" 点伤害！";
+
+if(dragonHp<=0){
+
+document.getElementById("log").innerHTML=
+"🏆 巨龙已被击败！获得100金币！";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
