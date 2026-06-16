@@ -1,36 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>天启帝国</title>
+
+<style>
+
+/* 背景 */
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(180deg,#050f2c,#081f55,#000814);
+color:white;
+font-family:Arial;
+}
+
+/* 主盒子 */
+#loading{
+text-align:center;
+}
+
+/* 皇冠 */
+.logo{
+font-size:120px;
+animation: glow 2s infinite;
+}
+
+/* 标题 */
+h1{
+font-size:60px;
+color:gold;
+text-shadow:0 0 20px gold;
+}
+
+/* 按钮 */
+button{
+padding:20px 60px;
+font-size:28px;
+border:none;
+border-radius:50px;
+background:gold;
+font-weight:bold;
+}
+
+@keyframes glow{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+</style>
+
+</head>
+
 <body>
 
 <div id="loading">
-  <div class="flash"></div>
 
-  <div class="logo">
-      👑
-  </div>
+<div class="logo">👑</div>
 
-  <h1>天启帝国</h1>
+<h1>天启帝国</h1>
 
-  <p>伟大的国王陛下</p>
+<p>伟大的国王陛下</p>
 
-  <button onclick="startGame()">
-      ⚔️ 开始征途
-  </button>
+<button onclick="startGame()">
+⚔️ 开始征途
+</button>
+
 </div>
-
-<audio id="bgm" autoplay loop>
-  <source src="bgm.mp3" type="audio/mpeg">
-</audio>
 
 <script>
 
 function startGame(){
 
-let msg=new SpeechSynthesisUtterance(
+let msg = new SpeechSynthesisUtterance(
 "欢迎来到天启帝国，伟大的国王陛下"
 );
 
 msg.lang="zh-CN";
-msg.rate=0.85;
-msg.pitch=0.8;
 
 speechSynthesis.speak(msg);
 
@@ -43,3 +95,5 @@ location.href="hall.html";
 </script>
 
 </body>
+
+</html>
