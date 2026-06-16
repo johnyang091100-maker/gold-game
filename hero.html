@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>英雄殿堂</title>
+
+<style>
+
+body{
+margin:0;
+background:linear-gradient(#081b3a,#000);
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-top:30px;
+}
+
+.hero{
+width:90%;
+margin:20px auto;
+padding:20px;
+background:rgba(255,255,255,.08);
+border-radius:20px;
+}
+
+.hero h2{
+color:gold;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:15px;
+background:gold;
+font-weight:bold;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>⚔️ 英雄殿堂 ⚔️</h1>
+
+<div class="hero">
+<h2>⚔️ 劍聖</h2>
+<p>近戰爆發英雄</p>
+<button onclick="pick('劍聖')">選擇</button>
+</div>
+
+<div class="hero">
+<h2>🏹 神射手</h2>
+<p>遠程高輸出</p>
+<button onclick="pick('神射手')">選擇</button>
+</div>
+
+<div class="hero">
+<h2>🧙 大法師</h2>
+<p>群體魔法傷害</p>
+<button onclick="pick('大法師')">選擇</button>
+</div>
+
+<div class="hero">
+<h2>🛡️ 聖騎士</h2>
+<p>高防禦坦克</p>
+<button onclick="pick('聖騎士')">選擇</button>
+</div>
+
+<script>
+
+function pick(hero){
+
+localStorage.setItem(
+"hero",
+hero
+);
+
+alert(
+"已選擇："+hero
+);
+
+location.href="hall.html";
+
+}
+
+</script>
+
+</body>
+</html>
