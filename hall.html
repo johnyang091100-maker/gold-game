@@ -3,17 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <title>天启帝国大厅</title>
+
+<style>
+body{
+margin:0;
+background:#050f2c;
+color:white;
+font-family:Arial;
+text-align:center;
+}
+
+h1{
+color:gold;
+margin-top:50px;
+font-size:50px;
+text-shadow:0 0 20px gold;
+}
+
+.card{
+width:90%;
+margin:auto;
+margin-top:30px;
+padding:20px;
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+}
+
+.btn{
+display:block;
+width:80%;
+margin:20px auto;
+padding:18px;
+border:none;
+border-radius:50px;
+background:gold;
+font-size:24px;
+font-weight:bold;
+}
+</style>
+
 </head>
 
-<body style="background:black;color:gold;text-align:center;padding-top:100px;">
+<body>
 
-<h1>👑 天启帝国大厅 👑</h1>
+<h1>👑 天启帝国 👑</h1>
 
-<h2>欢迎回来，国王陛下</h2>
+<div class="card">
+🏰 主城 Lv.1
+<br><br>
+💰 金币：1000
+<br><br>
+💎 钻石：100
+</div>
 
-<button onclick="alert('开始征战！')">
-⚔️ 开始游戏
+<button class="btn" onclick="dragon()">
+🐉 挑战巨龙
 </button>
+
+<button class="btn" onclick="arena()">
+⚔️ 王者竞技场
+</button>
+
+<script>
+
+function dragon(){
+alert("你进入了龙之巢穴！");
+}
+
+function arena(){
+alert("欢迎来到王者竞技场！");
+}
+
+</script>
 
 </body>
 </html>
