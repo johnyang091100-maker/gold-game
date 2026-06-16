@@ -9,35 +9,69 @@
 body{
 margin:0;
 background:linear-gradient(#081b3a,#000);
-color:white;
 font-family:Arial;
-text-align:center;
+color:white;
 }
 
 h1{
+text-align:center;
 color:gold;
-margin-top:30px;
+padding:20px;
+font-size:40px;
+text-shadow:0 0 15px gold;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:15px;
 }
 
 .hero{
-width:90%;
-margin:20px auto;
-padding:20px;
 background:rgba(255,255,255,.08);
 border-radius:20px;
+padding:15px;
+text-align:center;
+border:1px solid rgba(255,255,255,.15);
 }
 
-.hero h2{
+.hero:hover{
+transform:scale(1.03);
+}
+
+.icon{
+font-size:60px;
+}
+
+.name{
+font-size:22px;
 color:gold;
+margin-top:10px;
+}
+
+.role{
+color:#ccc;
+margin-top:5px;
 }
 
 button{
-padding:12px 25px;
+margin-top:10px;
+padding:10px 20px;
 border:none;
 border-radius:15px;
 background:gold;
 font-weight:bold;
-font-size:18px;
+}
+
+#selected{
+position:sticky;
+top:0;
+background:#111;
+padding:15px;
+text-align:center;
+font-size:22px;
+color:gold;
 }
 
 </style>
@@ -47,44 +81,104 @@ font-size:18px;
 
 <h1>⚔️ 英雄殿堂 ⚔️</h1>
 
+<div id="selected">
+当前英雄：未选择
+</div>
+
+<div class="hero-grid">
+
 <div class="hero">
-<h2>⚔️ 劍聖</h2>
-<p>近戰爆發英雄</p>
-<button onclick="pick('劍聖')">選擇</button>
+<div class="icon">⚔️</div>
+<div class="name">亚瑟</div>
+<div class="role">战士</div>
+<button onclick="pickHero('亚瑟')">选择</button>
 </div>
 
 <div class="hero">
-<h2>🏹 神射手</h2>
-<p>遠程高輸出</p>
-<button onclick="pick('神射手')">選擇</button>
+<div class="icon">🐉</div>
+<div class="name">赵云</div>
+<div class="role">战士</div>
+<button onclick="pickHero('赵云')">选择</button>
 </div>
 
 <div class="hero">
-<h2>🧙 大法師</h2>
-<p>群體魔法傷害</p>
-<button onclick="pick('大法師')">選擇</button>
+<div class="icon">🐒</div>
+<div class="name">悟空</div>
+<div class="role">刺客</div>
+<button onclick="pickHero('悟空')">选择</button>
 </div>
 
 <div class="hero">
-<h2>🛡️ 聖騎士</h2>
-<p>高防禦坦克</p>
-<button onclick="pick('聖騎士')">選擇</button>
+<div class="icon">🏹</div>
+<div class="name">后羿</div>
+<div class="role">射手</div>
+<button onclick="pickHero('后羿')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">🦊</div>
+<div class="name">妲己</div>
+<div class="role">法师</div>
+<button onclick="pickHero('妲己')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">⚡</div>
+<div class="name">诸葛亮</div>
+<div class="role">法师</div>
+<button onclick="pickHero('诸葛亮')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">🛡️</div>
+<div class="name">吕布</div>
+<div class="role">战士</div>
+<button onclick="pickHero('吕布')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">🌙</div>
+<div class="name">嫦娥</div>
+<div class="role">法师</div>
+<button onclick="pickHero('嫦娥')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">🌪️</div>
+<div class="name">李白</div>
+<div class="role">刺客</div>
+<button onclick="pickHero('李白')">选择</button>
+</div>
+
+<div class="hero">
+<div class="icon">🔥</div>
+<div class="name">关羽</div>
+<div class="role">战士</div>
+<button onclick="pickHero('关羽')">选择</button>
+</div>
+
 </div>
 
 <script>
 
-function pick(hero){
+function pickHero(hero){
 
-localStorage.setItem(
-"hero",
-hero
-);
+localStorage.setItem("hero",hero);
 
-alert(
-"已選擇："+hero
-);
+document.getElementById("selected").innerHTML=
+"当前英雄："+hero;
 
-location.href="hall.html";
+alert("已选择英雄："+hero);
+
+}
+
+let currentHero =
+localStorage.getItem("hero");
+
+if(currentHero){
+
+document.getElementById("selected").innerHTML=
+"当前英雄："+currentHero;
 
 }
 
