@@ -1,0 +1,6 @@
+dragon_knight.png
+sword_master.png
+moon_mage.png
+sky_archer.png
+royal_knight.png
+shadow_assassin.png
