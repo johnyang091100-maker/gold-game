@@ -2,73 +2,126 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>天启帝国 - 巨龙之战</title>
+<title>天启帝国 - 龙王降临</title>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),
-url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?auto=format&fit=crop&w=1200&q=80");
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1200");
 background-size:cover;
 background-position:center;
-font-family:Arial;
 color:white;
-text-align:center;
 overflow:hidden;
 }
 
+.top{
+padding-top:30px;
+text-align:center;
+}
+
 .title{
-margin-top:30px;
 font-size:42px;
 font-weight:bold;
 color:#ffd700;
 text-shadow:0 0 20px gold;
 }
 
+.subtitle{
+margin-top:10px;
+color:#ddd;
+}
+
 .dragon{
-font-size:120px;
+font-size:140px;
+margin-top:30px;
 animation:float 2s infinite alternate;
 }
 
 @keyframes float{
-from{transform:translateY(0);}
-to{transform:translateY(-15px);}
+from{transform:translateY(0)}
+to{transform:translateY(-15px)}
 }
 
 .hpbox{
-width:80%;
-height:30px;
-margin:auto;
+width:85%;
+height:28px;
+margin:20px auto;
 background:#222;
 border-radius:30px;
 overflow:hidden;
+border:2px solid #555;
 }
 
 .hp{
-height:100%;
 width:100%;
-background:linear-gradient(90deg,#ff0000,#ff6600);
-transition:0.3s;
+height:100%;
+background:
+linear-gradient(90deg,#ff0000,#ff8800);
+transition:.3s;
 }
 
-button{
+.hptext{
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+
+.skills{
+display:flex;
+justify-content:center;
+gap:12px;
 margin-top:25px;
-padding:18px 50px;
-font-size:24px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:14px 20px;
 border:none;
-border-radius:20px;
-background:gold;
+border-radius:15px;
+font-size:18px;
 font-weight:bold;
 }
 
-#log{
+.red{
+background:#ff3b30;
+color:white;
+}
+
+.blue{
+background:#007aff;
+color:white;
+}
+
+.gold{
+background:gold;
+}
+
+.log{
 margin-top:30px;
-font-size:24px;
+text-align:center;
+font-size:22px;
 font-weight:bold;
-color:#fff;
+min-height:60px;
+padding:15px;
+}
+
+.reward{
+position:absolute;
+top:15px;
+right:15px;
+background:rgba(0,0,0,.5);
+padding:10px 15px;
+border-radius:15px;
 }
 
 </style>
@@ -76,64 +129,94 @@ color:#fff;
 
 <body>
 
+<div class="reward">
+💰 金币：1000
+</div>
+
+<div class="top">
+
 <div class="title">
-🐉 巨龙之王降临 🐉
+🐉 龙王降临
+</div>
+
+<div class="subtitle">
+终极Boss战
 </div>
 
 <div class="dragon">
 🐲
 </div>
 
+</div>
+
 <div class="hpbox">
 <div class="hp" id="hp"></div>
 </div>
 
-<h2 id="hpText">
+<div class="hptext" id="hpText">
 Boss生命：100
-</h2>
+</div>
 
-<button onclick="attack()">
-⚔️ 发动攻击
+<div class="skills">
+
+<button class="btn gold" onclick="attack(15)">
+⚔️ 斩击
 </button>
 
-<div id="log">
-准备迎战巨龙...
+<button class="btn red" onclick="attack(25)">
+🔥 烈焰斩
+</button>
+
+<button class="btn blue" onclick="attack(35)">
+⚡ 雷霆击
+</button>
+
+</div>
+
+<div class="log" id="log">
+国王陛下，准备迎战！
 </div>
 
 <script>
 
 let hp=100;
 
-function attack(){
+function attack(power){
 
 let damage=
-Math.floor(Math.random()*25)+10;
+Math.floor(Math.random()*power)+10;
 
 hp-=damage;
 
-if(hp<0) hp=0;
-
-document.getElementById("hpText").innerHTML=
-"Boss生命："+hp;
+if(hp<0){
+hp=0;
+}
 
 document.getElementById("hp").style.width=
 hp+"%";
 
-if(damage>=30){
+document.getElementById("hpText").innerHTML=
+"Boss生命："+hp;
+
+if(damage>35){
+
 document.getElementById("log").innerHTML=
 "💥 暴击！造成 "+damage+" 点伤害";
+
 }else{
+
 document.getElementById("log").innerHTML=
 "⚔️ 造成 "+damage+" 点伤害";
+
 }
 
 if(hp<=0){
 
 document.getElementById("log").innerHTML=
-"🏆 巨龙已被击败！获得100金币！";
+"🏆 龙王已被击败！";
 
 setTimeout(()=>{
-alert("👑 恭喜国王陛下凯旋归来！");
+alert("👑 恭喜国王陛下凯旋！");
 },500);
 
 }
