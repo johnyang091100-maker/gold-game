@@ -2,115 +2,139 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>巨龙之战</title>
+<title>天启帝国 - 巨龙之战</title>
 
 <style>
 
 body{
 margin:0;
-background:#050f2c;
-color:white;
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),
+url("https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?auto=format&fit=crop&w=1200&q=80");
+background-size:cover;
+background-position:center;
 font-family:Arial;
+color:white;
 text-align:center;
+overflow:hidden;
 }
 
-h1{
-color:red;
-font-size:40px;
+.title{
 margin-top:30px;
+font-size:42px;
+font-weight:bold;
+color:#ffd700;
+text-shadow:0 0 20px gold;
 }
 
 .dragon{
 font-size:120px;
+animation:float 2s infinite alternate;
 }
 
-.bar{
+@keyframes float{
+from{transform:translateY(0);}
+to{transform:translateY(-15px);}
+}
+
+.hpbox{
 width:80%;
-height:25px;
-background:#333;
+height:30px;
 margin:auto;
-border-radius:20px;
+background:#222;
+border-radius:30px;
 overflow:hidden;
 }
 
 .hp{
 height:100%;
 width:100%;
-background:red;
+background:linear-gradient(90deg,#ff0000,#ff6600);
+transition:0.3s;
 }
 
 button{
-padding:15px 40px;
+margin-top:25px;
+padding:18px 50px;
 font-size:24px;
-margin-top:30px;
 border:none;
-border-radius:15px;
+border-radius:20px;
 background:gold;
 font-weight:bold;
 }
 
 #log{
 margin-top:30px;
-padding:20px;
+font-size:24px;
+font-weight:bold;
+color:#fff;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<h1>🐉 巨龙之王</h1>
+<div class="title">
+🐉 巨龙之王降临 🐉
+</div>
 
 <div class="dragon">
 🐲
 </div>
 
-<div class="bar">
+<div class="hpbox">
 <div class="hp" id="hp"></div>
 </div>
 
 <h2 id="hpText">
-生命值：100
+Boss生命：100
 </h2>
 
 <button onclick="attack()">
-⚔️ 攻击
+⚔️ 发动攻击
 </button>
 
 <div id="log">
-准备战斗...
+准备迎战巨龙...
 </div>
 
 <script>
 
-let dragonHp=100;
+let hp=100;
 
 function attack(){
 
-let damage=Math.floor(
-Math.random()*20
-)+10;
+let damage=
+Math.floor(Math.random()*25)+10;
 
-dragonHp-=damage;
+hp-=damage;
 
-if(dragonHp<0){
-dragonHp=0;
-}
+if(hp<0) hp=0;
 
 document.getElementById("hpText").innerHTML=
-"生命值："+dragonHp;
+"Boss生命："+hp;
 
 document.getElementById("hp").style.width=
-dragonHp+"%";
+hp+"%";
 
+if(damage>=30){
 document.getElementById("log").innerHTML=
-"你造成了 "+damage+" 点伤害！";
+"💥 暴击！造成 "+damage+" 点伤害";
+}else{
+document.getElementById("log").innerHTML=
+"⚔️ 造成 "+damage+" 点伤害";
+}
 
-if(dragonHp<=0){
+if(hp<=0){
 
 document.getElementById("log").innerHTML=
 "🏆 巨龙已被击败！获得100金币！";
+
+setTimeout(()=>{
+alert("👑 恭喜国王陛下凯旋归来！");
+},500);
 
 }
 
